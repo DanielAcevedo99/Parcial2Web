@@ -1,6 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Propuesta } from '../propuesta/propuesta.entity'
 
-export class ProfesorEntity {
+export class Profesor {
     @PrimaryGeneratedColumn('uuid')
     idPRofesor: string;
 
@@ -15,4 +16,7 @@ export class ProfesorEntity {
 
     @Column()
     numeroExtension: number;
+
+    @OneToMany(() => Propuesta, propuesta => propuesta.profesor)
+    propuestas: Propuesta[];
 }
