@@ -1,15 +1,15 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-export class EstudianteEntity {
+export class ProyectoEntity {
     @PrimaryGeneratedColumn('uuid')
-    idEstudiante: string;
+    idProyecto: string;
 
     @Column()
-    nombre: string;
+    url: string;
 
     @Column()
-    codigoEstudiante: string;
+    fechaInicio: Date;
 
     @Column()
-    numeroCreditosAprobados: number;
+    fechaFin: Date;
 }

@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 export class ProfesorEntity {
     @PrimaryGeneratedColumn('uuid')
-    id: number;
+    idPRofesor: string;
 
     @Column()
     numeroCedula: number;
