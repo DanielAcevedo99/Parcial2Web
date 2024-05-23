@@ -6,6 +6,6 @@ import { Propuesta } from '../propuesta/propuesta.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Profesor, Propuesta])],
-  providers: [ProfesorService]
+  providers: [ProfesorService],
 })
 export class ProfesorModule {}
