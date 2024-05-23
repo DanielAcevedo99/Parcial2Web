@@ -3,7 +3,7 @@ import { Propuesta } from '../propuesta/propuesta.entity'
 
 export class Profesor {
     @PrimaryGeneratedColumn('uuid')
-    idPRofesor: string;
+    idProfesor: string;
 
     @Column()
     numeroCedula: number;
