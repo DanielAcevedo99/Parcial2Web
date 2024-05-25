@@ -1,9 +1,7 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Proyecto } from './proyecto.entity';
-import { Estudiante } from '../estudiante/estudiante.entity';
-import { Propuesta } from '../propuesta/propuesta.entity';
 
 @Injectable()
 export class ProyectoService {
@@ -18,5 +16,17 @@ export class ProyectoService {
     }
     const proyecto = this.proyectoRepository.create(proyectoData);
     return this.proyectoRepository.save(proyecto);
+  }
+
+  async findProyectoById(id: string): Promise<Proyecto> {
+    const proyecto = await this.proyectoRepository.findOne({ where: { idProyecto: id }, relations: ['estudiante', 'propuesta'] });
+    if (!proyecto) {
+      throw new NotFoundException('Proyecto no encontrado');
+    }
+    return proyecto;
+  }
+
+  async findAllProyectos(): Promise<Proyecto[]> {
+    return this.proyectoRepository.find({ relations: ['estudiante', 'propuesta'] });
   }
 }

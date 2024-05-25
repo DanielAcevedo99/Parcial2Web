@@ -4,9 +4,11 @@ import { ProyectoService } from './proyecto.service';
 import { Proyecto } from './proyecto.entity';
 import { Estudiante } from '../estudiante/estudiante.entity';
 import { Propuesta } from '../propuesta/propuesta.entity';
+import { ProyectoController } from './proyecto.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Proyecto, Estudiante, Propuesta])],
   providers: [ProyectoService],
+  controllers: [ProyectoController],
 })
 export class ProyectoModule {}
